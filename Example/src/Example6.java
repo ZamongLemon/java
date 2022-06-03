@@ -1,29 +1,42 @@
+import java.util.Scanner;
 
 public class Example6 {
 
 	public static void main(String[] args) {
 		/*
-		  1~10 순차적용되는 반복문
-		  단, 1~5까지는 모든 값을 곱하고, 6~10까지는 모든 값을 더합니다.
-		  해당 두개의 값을 비교하여 더한값이 큰지 곱한값이 큰지를 출력
+		 	2차 배열이며, 2차배열 데이터는 다음과 같습니다.
+		 	user_list : {"홍길동","이순신","강감찬","유관순","세종대왕","김유신","계백장군"}
+		 	user_point : {"3000","1000","25000","19800","5750","5630","0"};
+		 	프로그램 시작과 동시에 "포인트를 검색할 고객명을 입력하세요".
+		 	입력한 값은 별도의 class 를 제작하여 해당 method 값으로 전달 후 출력
 		 */
-		int a=1,b=0;
-		for (int i = 1 ; i <= 10; i++) {
-			if(i<=5) {
-				a*=i;
-			}
-			else {
-				b+=i;
-			}
-		}	
-		if(a>b) {
-			System.out.println("1~5까지 곱한 값이 더 큽니다.");
-		}else if(a<b) {
-			System.out.println("6~10까지 더한 값이 더 큽니다.");
-		}else {
-			System.out.println("같습니다.");
-		}
-
+		Scanner scan_name = new Scanner(System.in);
+		System.out.println("포인트를 검색할 고객명을 입력하세요.");
+		String user_name = scan_name.next();
+		getData getD = new getData();
+		getD.findPoint(user_name);
+		scan_name.close();
+		getD=null;
 	}
 
+}
+class getData{
+	String[][] user_data = {{"홍길동","이순신","강감찬","유관순","세종대왕","김유신","계백장군"},
+			{"3000","1000","25000","19800","5750","5630","0"}};
+	
+	void findPoint(String name) {
+		String msg ="";
+		boolean a = false;
+		for(int i = 0 ; i< user_data[0].length;i++ ) {
+			if(name.equals(user_data[0][i])) {
+				msg = name+"고객님의 포인트는 : "+user_data[1][i]+"입니다.";
+				a=true;
+				break;
+			}
+		}
+		if(!a) {
+			msg = "존재하지않는 고객명입니다.";
+		}
+		System.out.println(msg);
+	}
 }

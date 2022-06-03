@@ -1,32 +1,31 @@
-import java.util.Scanner;
 
 public class Example1 {
 
 	public static void main(String[] args) {
 		/*
-		   응용문제 
-		   while문으로 코드를 작성하며 , 프로세서는 다음과 같습니다.
-		   사용자가 상품을 전체 선택하였습니다.
-		   첫번째 질문은 "7000 결제하시겠습니까?" 라고 출력되며, 숫자 1이라고 입력하면 최종결제금액에 추가됨
-		   2라고 입력시 최종 결제금액에 추가되지 않음
-		   총 질문횟수 4번 마지막에 최종 결제금액이 나오도록 코드작성
+		 	배열+기본(클래스)메소드문제
+		 	1차배열에 다음과 같이 값이 있습니다.
+		 	배열리스트 22 33 44 55 66 77 88 99 이며
+		 	해당 전체 값을 모두 더한 총 합계값을 별도의 메소드로 
+		 	처리 되도록 합니다. 단, 반복문은 무조건 do~while문으로 작성 합니다.
 		 */
-		
-		Scanner scan_num = new Scanner(System.in);
-		int temp,sum=0,i=0;
-		while(i<4) {
-			System.out.println("7000 결제하시겠습니까?");
-			temp = scan_num.nextInt();
-			if(temp ==1) 
-			{
-				sum+=7000;
-			}
-			i++;			
-		}
-		System.out.println("최종 결제금액 : " + sum);
-		
-		scan_num.close();
 
+		int[] ar = {22,33,44,55,66,77,88,99};
+		Example1 ex1 = new Example1();
+		ex1.calcSum(ar);
+		ex1 = null;
+		
 	}
+	
+	void calcSum(int[] arr) {
+		int n=0,sum=0;
+		do {
+			sum+=arr[n];
+			n++;
+		}while(n<arr.length);
+		
+		System.out.println("합은 "+sum+" 입니다.");
+	}
+	
 
 }
